@@ -1,0 +1,21 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Ensure the provider is set to "mysql" to match your database
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// Define the Order model (table)
+model Order {
+  id          Int      @id @default(autoincrement())
+  customerName String
+  productName  String
+  quantity     Int
+  orderDate    DateTime @default(now())
+} 
